@@ -41,11 +41,11 @@ export const mobileProjects = [
   },
   {
     title: "TipNGo",
-    status: "Mobile build",
+    status: "Available for testing",
     summary:
       "A tipping and wallet app covering send-tip, receive-tip, funding, withdrawal, profile, and settings flows.",
     focus: ["Wallet UX", "MMKV", "Navigation", "Bottom sheets"],
-    links: [{ label: "Product link", href: "https://usetipngo.com/" }],
+    links: [],
   },
   {
     title: "NaraTherapy",

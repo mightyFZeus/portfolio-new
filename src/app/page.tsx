@@ -165,11 +165,27 @@ function SelectedWork() {
         <div className="max-w-3xl" data-reveal="up">
           <p className="font-semibold text-coral">Selected work</p>
           <h2 className="mt-3 text-[clamp(2.2rem,5vw,4.8rem)] font-black leading-none text-ink">
-            One AI/backend build, six mobile products.
+            Six mobile products, one AI/backend build.
           </h2>
         </div>
 
-        <article className="mt-14 grid gap-8 border-t border-line pt-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center" data-reveal="up" data-reveal-delay="80">
+        <div className="mt-14 border-t border-line pt-12">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between" data-reveal="up">
+            <div>
+              <p className="font-semibold text-coral">Mobile projects</p>
+              <h3 className="mt-3 max-w-3xl text-[clamp(2rem,4vw,3.8rem)] font-black leading-none text-ink">
+                React Native work across finance, therapy, football, moments, and super-app flows.
+              </h3>
+            </div>
+          </div>
+          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {mobileProjects.map((project, index) => (
+              <MobileProjectCard key={project.title} project={project} index={index} />
+            ))}
+          </div>
+        </div>
+
+        <article className="mt-20 grid gap-8 border-t border-line pt-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center" data-reveal="up" data-reveal-delay="80">
           <div data-reveal="left" data-reveal-delay="130">
             <p className="text-sm font-semibold text-muted">{project.category}</p>
             <div className="mt-3 flex flex-wrap items-center gap-3">
@@ -177,7 +193,7 @@ function SelectedWork() {
               <a
                 href={project.href}
                 className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-line text-muted transition hover:border-ink hover:text-ink focus:outline-none focus:ring-2 focus:ring-coral focus:ring-offset-2 focus:ring-offset-paper-deep"
-                aria-label={`Open ${project.title} repository`}
+                aria-label={`Open ${project.title} live project`}
               >
                 <ArrowUpRight size={18} />
               </a>
@@ -203,22 +219,6 @@ function SelectedWork() {
             <WorkVisual visual="rag" />
           </div>
         </article>
-
-        <div className="mt-20 border-t border-line pt-12">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between" data-reveal="up">
-            <div>
-              <p className="font-semibold text-coral">Mobile projects</p>
-              <h3 className="mt-3 max-w-3xl text-[clamp(2rem,4vw,3.8rem)] font-black leading-none text-ink">
-                React Native work across finance, therapy, football, moments, and super-app flows.
-              </h3>
-            </div>
-          </div>
-          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {mobileProjects.map((project, index) => (
-              <MobileProjectCard key={project.title} project={project} index={index} />
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
