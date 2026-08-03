@@ -86,19 +86,19 @@ export const mobileProjects = [
 
 export const systemDesigns = [
   {
-    title: "System Design 01",
-    type: "Readonly Excalidraw board",
+    title: "Event Scheduling Service",
+    type: "System design board",
     summary:
-      "Architecture notes for service boundaries, request flow, data movement, and the operational decisions around a build.",
-    tags: ["Architecture", "Data flow", "Services", "Excalidraw"],
+      "A Calendly-style scheduling service covering availability rules, booking slots, calendar sync, reminders, conflict checks, and reservation flow.",
+    tags: ["Availability", "Bookings", "Calendar sync", "Reminders"],
     href: "https://link.excalidraw.com/readonly/3CQFF8HARutZrL9jklet",
   },
   {
-    title: "System Design 02",
-    type: "Readonly Excalidraw board",
+    title: "URL Shortener Service",
+    type: "System design board",
     summary:
-      "A second system-design pass focused on runtime behavior, integration points, and the tradeoffs behind the implementation.",
-    tags: ["Runtime flow", "Integrations", "Scaling", "Excalidraw"],
+      "A URL shortener design covering slug generation, redirect resolution, custom links, click analytics, cache strategy, and durable URL storage.",
+    tags: ["Slug generation", "Redirects", "Analytics", "Caching"],
     href: "https://link.excalidraw.com/readonly/EksVh3LhxxEJ9Kvku0XP?darkMode=true",
   },
 ] as const;
