@@ -84,6 +84,25 @@ export const mobileProjects = [
   },
 ] as const;
 
+export const systemDesigns = [
+  {
+    title: "System Design 01",
+    type: "Readonly Excalidraw board",
+    summary:
+      "Architecture notes for service boundaries, request flow, data movement, and the operational decisions around a build.",
+    tags: ["Architecture", "Data flow", "Services", "Excalidraw"],
+    href: "https://link.excalidraw.com/readonly/3CQFF8HARutZrL9jklet",
+  },
+  {
+    title: "System Design 02",
+    type: "Readonly Excalidraw board",
+    summary:
+      "A second system-design pass focused on runtime behavior, integration points, and the tradeoffs behind the implementation.",
+    tags: ["Runtime flow", "Integrations", "Scaling", "Excalidraw"],
+    href: "https://link.excalidraw.com/readonly/EksVh3LhxxEJ9Kvku0XP?darkMode=true",
+  },
+] as const;
+
 export const strengths = [
   {
     title: "Retrieval products",

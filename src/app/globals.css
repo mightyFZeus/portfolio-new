@@ -105,6 +105,30 @@ a:active {
   transform: translateZ(0);
 }
 
+.system-map {
+  background-image:
+    linear-gradient(oklch(var(--paper) / 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(var(--paper) / 0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.system-node {
+  transition:
+    transform 420ms var(--ease-out-expo),
+    border-color 420ms var(--ease-out-expo),
+    background-color 420ms var(--ease-out-expo);
+}
+
+.group:hover .system-node {
+  transform: translateY(-3px);
+  border-color: oklch(var(--paper) / 0.4);
+}
+
+.system-path {
+  transform-origin: left;
+  animation: system-path-pulse 3.8s var(--ease-out-quint) infinite;
+}
+
 .work-visual::after {
   position: absolute;
   inset: -30% auto -30% -40%;
@@ -262,6 +286,19 @@ a:active {
 
   100% {
     transform: translateY(0) rotate(0);
+  }
+}
+
+@keyframes system-path-pulse {
+  0%,
+  100% {
+    opacity: 0.32;
+    transform: scaleX(0.76);
+  }
+
+  45% {
+    opacity: 0.9;
+    transform: scaleX(1);
   }
 }
 
