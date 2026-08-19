@@ -109,7 +109,14 @@ a:active {
   background-image:
     linear-gradient(oklch(var(--paper) / 0.08) 1px, transparent 1px),
     linear-gradient(90deg, oklch(var(--paper) / 0.08) 1px, transparent 1px);
-  background-size: 22px 22px;
+  background-size: 18px 18px;
+}
+
+.system-card-summary {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 .system-node {
