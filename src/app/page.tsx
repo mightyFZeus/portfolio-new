@@ -291,11 +291,11 @@ function SystemDesignSection() {
             <h2 className="mt-3 text-[clamp(2.1rem,4.5vw,4.2rem)] font-black leading-none text-ink">
               The architecture thinking behind the build.
             </h2>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-muted">
-              A few readonly design boards for how services, queues, integrations, and product states are reasoned through before implementation.
+            <p className="mt-6 max-w-xl leading-7 text-muted">
+              A growing set of system-design boards for service flows, data movement, tradeoffs, and product constraints.
             </p>
           </div>
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {systemDesigns.map((design, index) => (
               <SystemDesignCard key={design.href} design={design} index={index} />
             ))}
@@ -308,17 +308,17 @@ function SystemDesignSection() {
 
 function SystemDesignCard({ design, index }: { design: (typeof systemDesigns)[number]; index: number }) {
   return (
-    <article className="group rounded-lg border border-line bg-paper-deep p-5 transition hover:-translate-y-1 hover:shadow-artifact" data-reveal="up" data-reveal-delay={String(index * 90)}>
+    <article className="group rounded-lg border border-line bg-paper-deep p-4 transition hover:-translate-y-1 hover:shadow-artifact" data-reveal="up" data-reveal-delay={String(index * 70)}>
       <SystemMap index={index} />
-      <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-        <p className="text-sm font-semibold text-coral">{design.type}</p>
-        <span className="rounded-md border border-line bg-paper px-2.5 py-1 text-xs font-bold italic text-muted">diagram</span>
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
+        <p className="text-xs font-semibold text-coral">{design.type}</p>
+        <span className="rounded-md border border-line bg-paper px-2 py-1 text-xs font-bold italic text-muted">diagram</span>
       </div>
-      <h3 className="mt-3 text-2xl font-black text-ink">{design.title}</h3>
-      <p className="mt-3 leading-7 text-muted">{design.summary}</p>
-      <div className="mt-5 flex flex-wrap gap-2">
+      <h3 className="mt-2 text-xl font-black leading-tight text-ink">{design.title}</h3>
+      <p className="mt-2 text-sm leading-6 text-muted">{design.summary}</p>
+      <div className="mt-4 flex flex-wrap gap-1.5">
         {design.tags.map((tag) => (
-          <span key={tag} className="mobile-tag rounded-md bg-paper px-2.5 py-1 text-xs font-semibold italic text-muted shadow-inset">
+          <span key={tag} className="mobile-tag rounded-md bg-paper px-2 py-1 text-xs font-semibold italic text-muted shadow-inset">
             {tag}
           </span>
         ))}
@@ -328,10 +328,10 @@ function SystemDesignCard({ design, index }: { design: (typeof systemDesigns)[nu
         target="_blank"
         rel="noreferrer"
         aria-label={`Open ${design.title}`}
-        className="mt-6 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md border border-ink bg-ink px-4 py-2.5 text-sm font-bold text-paper transition hover:-translate-y-0.5 hover:bg-moss focus:outline-none focus:ring-2 focus:ring-coral focus:ring-offset-2 focus:ring-offset-paper-deep"
+        className="mt-5 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md border border-ink bg-ink px-3 py-2 text-xs font-bold text-paper transition hover:-translate-y-0.5 hover:bg-moss focus:outline-none focus:ring-2 focus:ring-coral focus:ring-offset-2 focus:ring-offset-paper-deep"
       >
         Open diagram
-        <ArrowUpRight size={16} />
+        <ArrowUpRight size={14} />
       </a>
     </article>
   );
@@ -342,22 +342,22 @@ function SystemMap({ index }: { index: number }) {
   const softAccent = index % 2 === 0 ? "bg-coral/25" : "bg-blue/25";
 
   return (
-    <div className="system-map relative h-44 overflow-hidden rounded-md border border-ink bg-ink p-4 text-paper">
+    <div className="system-map relative h-28 overflow-hidden rounded-md border border-ink bg-ink p-3 text-paper">
       <span className="system-path absolute left-[30%] top-[32%] h-px w-[35%] bg-paper/35" />
       <span className="system-path absolute bottom-[33%] left-[32%] h-px w-[36%] bg-paper/35" />
-      <span className={`system-node absolute left-4 top-5 rounded-md border border-paper/20 ${softAccent} px-3 py-2 text-xs font-bold`}>
+      <span className={`system-node absolute left-3 top-3 rounded-md border border-paper/20 ${softAccent} px-2 py-1 text-[11px] font-bold`}>
         client
       </span>
-      <span className="system-node absolute right-5 top-5 rounded-md border border-paper/20 bg-paper/10 px-3 py-2 text-xs font-bold">
+      <span className="system-node absolute right-3 top-3 rounded-md border border-paper/20 bg-paper/10 px-2 py-1 text-[11px] font-bold">
         api
       </span>
-      <span className="system-node absolute bottom-5 left-6 rounded-md border border-paper/20 bg-paper/10 px-3 py-2 text-xs font-bold">
+      <span className="system-node absolute bottom-3 left-4 rounded-md border border-paper/20 bg-paper/10 px-2 py-1 text-[11px] font-bold">
         queue
       </span>
-      <span className={`system-node absolute bottom-5 right-6 rounded-md border border-paper/20 ${accent} px-3 py-2 text-xs font-bold text-ink`}>
+      <span className={`system-node absolute bottom-3 right-4 rounded-md border border-paper/20 ${accent} px-2 py-1 text-[11px] font-bold text-ink`}>
         store
       </span>
-      <span className={`absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full ${accent}`} />
+      <span className={`absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full ${accent}`} />
     </div>
   );
 }

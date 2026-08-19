@@ -87,19 +87,19 @@ export const mobileProjects = [
 export const systemDesigns = [
   {
     title: "Event Scheduling Service",
-    type: "System design board",
+    type: "tldraw board",
     summary:
       "A Calendly-style scheduling service covering availability rules, booking slots, calendar sync, reminders, conflict checks, and reservation flow.",
     tags: ["Availability", "Bookings", "Calendar sync", "Reminders"],
-    href: "https://link.excalidraw.com/readonly/3CQFF8HARutZrL9jklet",
+    href: "https://www.tldraw.com/p/rI_eWBqbmkz5oYgsdz28-?d=v-3878.-4199.9424.5915.zC6jk9IYPU9wZzcEAJbzj",
   },
   {
     title: "URL Shortener Service",
-    type: "System design board",
+    type: "tldraw board",
     summary:
       "A URL shortener design covering slug generation, redirect resolution, custom links, click analytics, cache strategy, and durable URL storage.",
     tags: ["Slug generation", "Redirects", "Analytics", "Caching"],
-    href: "https://link.excalidraw.com/readonly/EksVh3LhxxEJ9Kvku0XP?darkMode=true",
+    href: "https://www.tldraw.com/p/rI_eWBqbmkz5oYgsdz28-?d=v-3583.-3321.9365.5878.page",
   },
 ] as const;
 
