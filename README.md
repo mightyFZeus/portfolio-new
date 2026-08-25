@@ -1,6 +1,6 @@
 # Bolarin Olabisi Portfolio
 
-A focused one-page portfolio for product engineering work across mobile apps, AI products, Go services, and backend systems.
+A focused one-page portfolio for product engineering work across mobile apps, Go services, backend systems, and system design.
 
 ## Stack
 
@@ -33,8 +33,6 @@ src/
     globals.css
     layout.tsx
     page.tsx
-  components/
-    work-visuals.tsx
   data/
     portfolio.ts
   lib/

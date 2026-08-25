@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Bolarin Olabisi | Product Engineer",
   description:
-    "Portfolio of Bolarin Olabisi, a product engineer building mobile apps, AI products, Go services, and backend systems.",
+    "Portfolio of Bolarin Olabisi, a product engineer building mobile apps, Go services, and backend systems.",
 };
 
 export const viewport: Viewport = {

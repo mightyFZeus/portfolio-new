@@ -8,24 +8,10 @@ export const profile = {
   linkedin: "https://linkedin.com/in/bolarinolabisi",
   email: "bolarinolabisi36@gmail.com",
   cv: "/bolarin-olabisi-cv.pdf",
-  headline: "Mobile apps. AI products. Backend systems.",
+  headline: "Mobile apps. Backend systems. Product delivery.",
   intro:
     "Product engineer with 4+ years across healthtech and fintech. The work spans React Native apps, Go APIs, realtime systems, secure integrations, and app releases used by real customers.",
 };
-
-export const featuredProject = {
-  title: "Doc Explain",
-  category: "AI / Backend project",
-  href: "https://doc-explain.vercel.app/",
-  summary:
-    "A RAG platform prototype where users upload documents, the backend processes them in the background, and the product returns streamed, citation-aware answers.",
-  points: [
-    "Go API with auth, Cloudinary webhooks, Redis queues, and WebSocket status updates.",
-    "Document extraction, chunking, embeddings, encrypted chunk storage, and pgvector retrieval.",
-    "Document chat workflow with upload, processing feedback, source-aware answers, and account flows.",
-  ],
-  stack: ["Go", "PostgreSQL", "pgvector", "Redis", "Asynq", "OpenAI", "Cloudinary", "WebSockets"],
-} as const;
 
 export const mobileProjects = [
   {
@@ -51,8 +37,8 @@ export const mobileProjects = [
     title: "NaraTherapy",
     status: "Live",
     summary:
-      "A therapy and wellbeing app with journaling, mood check-ins, meditation, guided breathing, scheduling, and an AI mental-health chatbot.",
-    focus: ["Expo", "Firebase", "AI chatbot", "Scheduling"],
+      "A therapy and wellbeing app with journaling, mood check-ins, meditation, guided breathing, scheduling, and mobile release work.",
+    focus: ["Expo", "Firebase", "Wellbeing flows", "Scheduling"],
     links: [
       { label: "iOS live", href: "https://apps.apple.com/ng/app/nara-therapy/id6504929821" },
       { label: "Android live", href: "https://play.google.com/store/apps/details?id=com.naratherapy.naramobile&pcampaignid=web_share" },
@@ -105,8 +91,8 @@ export const systemDesigns = [
 
 export const strengths = [
   {
-    title: "Retrieval products",
-    body: "Document upload, extraction, chunking, embeddings, source-grounded answers, and UI states that make retrieval feel legible.",
+    title: "Product architecture",
+    body: "Service boundaries, request flows, data models, queues, and product states mapped early enough to guide implementation.",
   },
   {
     title: "Realtime and async UX",
@@ -136,7 +122,7 @@ export const stackGroups = [
     items: ["Go", "REST APIs", "JWT", "Firebase Auth", "PostgreSQL", "Firestore", "Redis", "WebSockets"],
   },
   {
-    title: "AI and integrations",
-    items: ["RAG", "OpenAI", "AI chatbots", "Stripe", "Google Calendar", "Google Maps", "Cloudinary", "Payment gateways"],
+    title: "Integrations",
+    items: ["Stripe", "Paystack", "Google Calendar", "Google Maps", "Cloudinary", "Socket.io", "Push messaging", "Payment gateways"],
   },
 ] as const;

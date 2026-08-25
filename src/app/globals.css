@@ -101,10 +101,6 @@ a:active {
   will-change: auto;
 }
 
-.work-visual {
-  transform: translateZ(0);
-}
-
 .system-map {
   background-image:
     linear-gradient(oklch(var(--paper) / 0.08) 1px, transparent 1px),
@@ -134,38 +130,6 @@ a:active {
 .system-path {
   transform-origin: left;
   animation: system-path-pulse 3.8s var(--ease-out-quint) infinite;
-}
-
-.work-visual::after {
-  position: absolute;
-  inset: -30% auto -30% -40%;
-  width: 34%;
-  content: "";
-  pointer-events: none;
-  background: linear-gradient(90deg, transparent, oklch(var(--paper) / 0.22), transparent);
-  transform: rotate(12deg);
-  animation: artifact-scan 6.5s var(--ease-out-quint) infinite;
-}
-
-.progress-line {
-  transform-origin: left;
-  animation: progress-breathe 3.6s var(--ease-out-quint) infinite;
-}
-
-.queue-step {
-  animation: queue-pulse 2.8s var(--ease-out-quint) infinite;
-}
-
-.queue-step:nth-of-type(2) {
-  animation-delay: 130ms;
-}
-
-.queue-step:nth-of-type(3) {
-  animation-delay: 260ms;
-}
-
-.queue-step:nth-of-type(4) {
-  animation-delay: 390ms;
 }
 
 .phone-mini {
@@ -223,51 +187,6 @@ a:active {
 
   to {
     background-position: 42px 42px, 42px 42px;
-  }
-}
-
-@keyframes artifact-scan {
-  0%,
-  46% {
-    transform: translateX(0) rotate(12deg);
-    opacity: 0;
-  }
-
-  55% {
-    opacity: 1;
-  }
-
-  72% {
-    opacity: 0.75;
-  }
-
-  100% {
-    transform: translateX(520%) rotate(12deg);
-    opacity: 0;
-  }
-}
-
-@keyframes progress-breathe {
-  0%,
-  100% {
-    transform: scaleX(0.82);
-  }
-
-  50% {
-    transform: scaleX(1);
-  }
-}
-
-@keyframes queue-pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 oklch(var(--paper) / 0);
-  }
-
-  42% {
-    transform: scale(1.08);
-    box-shadow: 0 0 0 5px oklch(var(--paper) / 0.12);
   }
 }
 

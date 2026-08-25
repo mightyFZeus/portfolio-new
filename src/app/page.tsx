@@ -13,8 +13,7 @@ import {
   Workflow,
 } from "lucide-react";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { WorkVisual } from "@/components/work-visuals";
-import { featuredProject, mobileProjects, profile, stackGroups, strengths, systemDesigns } from "@/data/portfolio";
+import { mobileProjects, profile, stackGroups, strengths, systemDesigns } from "@/data/portfolio";
 
 const iconMap = [FileText, Workflow, Smartphone, DatabaseZap, Rocket];
 
@@ -72,7 +71,7 @@ function HeroSection() {
     <section id="top" className="relative mx-auto grid max-w-7xl gap-12 px-4 pb-20 pt-14 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8 lg:pb-28 lg:pt-20">
       <div className="reveal">
         <p className="max-w-max rounded-md border border-line bg-paper-deep px-3 py-2 text-sm font-semibold text-muted">
-          Mobile, AI and backend product engineer: {profile.location}
+          Mobile and backend product engineer: {profile.location}
         </p>
         <h1 className="mt-8 max-w-4xl text-[clamp(3rem,8vw,7.8rem)] font-black leading-[0.9] text-ink">
           {profile.headline}
@@ -110,9 +109,9 @@ function HeroArtifact() {
               <p className="font-mono text-xs text-paper/65">current focus</p>
               <MessageSquareText size={18} />
             </div>
-            <p className="mt-8 text-4xl font-black leading-none">Documents that answer back with receipts.</p>
+            <p className="mt-8 text-4xl font-black leading-none">Products that feel fast from screen to service.</p>
             <div className="mt-8 space-y-3">
-              {["upload", "process", "retrieve", "stream"].map((step) => (
+              {["scope", "build", "test", "release"].map((step) => (
                 <div key={step} className="flex items-center gap-3 rounded-md border border-paper/20 px-3 py-2 text-sm">
                   <span className="h-2 w-2 rounded-full bg-coral" />
                   {step}
@@ -135,7 +134,7 @@ function HeroArtifact() {
         </div>
       </div>
       <div className="mt-5 grid grid-cols-2 gap-3 text-sm text-muted sm:grid-cols-4">
-        {["React Native", "Go APIs", "AI systems", "App Store"].map((item) => (
+        {["React Native", "Go APIs", "System design", "App Store"].map((item) => (
           <span key={item} className="rounded-md border border-line bg-paper px-3 py-2 text-center font-semibold">
             {item}
           </span>
@@ -158,68 +157,24 @@ function HeroArtifact() {
 }
 
 function SelectedWork() {
-  const project = featuredProject;
-
   return (
     <section id="work" className="border-t border-line bg-paper-deep py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl" data-reveal="up">
           <p className="font-semibold text-coral">Selected work</p>
           <h2 className="mt-3 text-[clamp(2.2rem,5vw,4.8rem)] font-black leading-none text-ink">
-            Six mobile products, one AI/backend build.
+            Mobile products built for real users and release cycles.
           </h2>
+          <p className="mt-6 max-w-2xl leading-7 text-muted">
+            React Native work across finance, therapy, football, moments, and super-app flows.
+          </p>
         </div>
 
-        <div className="mt-14 border-t border-line pt-12">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between" data-reveal="up">
-            <div>
-              <p className="font-semibold text-coral">Mobile projects</p>
-              <h3 className="mt-3 max-w-3xl text-[clamp(2rem,4vw,3.8rem)] font-black leading-none text-ink">
-                React Native work across finance, therapy, football, moments, and super-app flows.
-              </h3>
-            </div>
-          </div>
-          <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {mobileProjects.map((project, index) => (
-              <MobileProjectCard key={project.title} project={project} index={index} />
-            ))}
-          </div>
+        <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {mobileProjects.map((project, index) => (
+            <MobileProjectCard key={project.title} project={project} index={index} />
+          ))}
         </div>
-
-        <article className="mt-20 grid gap-8 border-t border-line pt-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center" data-reveal="up" data-reveal-delay="80">
-          <div data-reveal="left" data-reveal-delay="130">
-            <p className="text-sm font-semibold text-muted">{project.category}</p>
-            <div className="mt-3 flex flex-wrap items-center gap-3">
-              <h3 className="text-3xl font-black text-ink sm:text-4xl">{project.title}</h3>
-              <a
-                href={project.href}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-line text-muted transition hover:border-ink hover:text-ink focus:outline-none focus:ring-2 focus:ring-coral focus:ring-offset-2 focus:ring-offset-paper-deep"
-                aria-label={`Open ${project.title} live project`}
-              >
-                <ArrowUpRight size={18} />
-              </a>
-            </div>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-muted">{project.summary}</p>
-            <ul className="mt-7 space-y-3">
-              {project.points.map((point) => (
-                <li key={point} className="flex gap-3 text-muted">
-                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-coral" />
-                  <span className="leading-7">{point}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-7 flex flex-wrap gap-2">
-              {project.stack.map((item) => (
-                <span key={item} className="rounded-md border border-line bg-paper px-3 py-1.5 text-sm font-semibold text-muted">
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div data-reveal="right" data-reveal-delay="180">
-            <WorkVisual visual="rag" />
-          </div>
-        </article>
       </div>
     </section>
   );
@@ -368,7 +323,7 @@ function StrengthsSection() {
           <div data-reveal="left">
             <p className="font-semibold text-coral">How I work</p>
             <h2 className="mt-3 text-[clamp(2.1rem,4.5vw,4.2rem)] font-black leading-none">
-              I like the hard middle of mobile, AI and backend work.
+              I like the hard middle of mobile and backend work.
             </h2>
           </div>
           <div className="divide-y divide-paper/20 border-y border-paper/20">
@@ -401,7 +356,7 @@ function StackSection() {
           <div data-reveal="left">
             <p className="font-semibold text-coral">Working stack</p>
             <h2 className="mt-3 text-[clamp(2.1rem,4vw,4rem)] font-black leading-none text-ink">
-              Mobile, backend, and AI tools.
+              Mobile, backend, and integration tools.
             </h2>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
