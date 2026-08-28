@@ -1,14 +1,11 @@
 import {
   ArrowUpRight,
-  Blocks,
   DatabaseZap,
   Download,
   FileText,
   Linkedin,
   Mail,
-  MessageSquareText,
   Rocket,
-  Send,
   Smartphone,
   Workflow,
 } from "lucide-react";
@@ -38,7 +35,10 @@ function SiteHeader() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <a href="#top" className="flex items-center gap-3 font-black text-ink">
           <span className="grid h-9 w-9 place-items-center rounded-md bg-ink text-sm text-paper">{profile.initials}</span>
-          <span>{profile.name}</span>
+          <span className="leading-tight">
+            {profile.name}
+            <span className="block text-xs font-semibold text-muted">{profile.role}</span>
+          </span>
         </a>
         <div className="hidden items-center gap-6 text-sm text-muted md:flex">
           <a className="transition hover:text-ink" href="#work">
@@ -71,7 +71,7 @@ function HeroSection() {
     <section id="top" className="relative mx-auto grid max-w-7xl gap-12 px-4 pb-20 pt-14 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8 lg:pb-28 lg:pt-20">
       <div className="reveal">
         <p className="max-w-max rounded-md border border-line bg-paper-deep px-3 py-2 text-sm font-semibold text-muted">
-          Mobile and backend product engineer: {profile.location}
+          Senior React Native developer: {profile.location}
         </p>
         <h1 className="mt-8 max-w-4xl text-[clamp(3rem,8vw,7.8rem)] font-black leading-[0.9] text-ink">
           {profile.headline}
@@ -100,41 +100,48 @@ function HeroSection() {
 }
 
 function HeroArtifact() {
+  const releaseItems = [
+    ["Navigation", "typed"],
+    ["State", "persisted"],
+    ["QA", "device tested"],
+  ];
+
   return (
     <div className="reveal-delay relative">
-      <div className="rounded-lg border border-line bg-paper p-3 shadow-artifact">
-        <div className="grid gap-3 md:grid-cols-[1fr_0.78fr]">
-          <div className="rounded-md bg-ink p-5 text-paper">
+      <div className="hero-device-stage relative overflow-hidden rounded-lg border border-line bg-paper-deep p-4 shadow-artifact sm:p-5">
+        <div className="relative z-10 flex items-center justify-between gap-4">
+          <span className="inline-flex items-center gap-2 rounded-md border border-line bg-paper px-3 py-2 text-sm font-black text-ink">
+            <Smartphone size={16} />
+            Senior RN
+          </span>
+          <span className="font-mono text-xs font-semibold text-muted">release train 4.8</span>
+        </div>
+
+        <div className="relative z-10 mt-6 min-h-[430px] sm:min-h-[455px]">
+          <HeroPhone variant="secondary" />
+          <HeroPhone variant="primary" />
+
+          <div className="release-card absolute bottom-0 left-0 right-0 z-20 rounded-lg border border-line bg-paper p-4 shadow-artifact sm:left-auto sm:right-0 sm:w-64">
             <div className="flex items-center justify-between">
-              <p className="font-mono text-xs text-paper/65">current focus</p>
-              <MessageSquareText size={18} />
+              <p className="text-sm font-black text-ink">Ready for handoff</p>
+              <Rocket size={17} className="text-coral" />
             </div>
-            <p className="mt-8 text-4xl font-black leading-none">Products that feel fast from screen to service.</p>
-            <div className="mt-8 space-y-3">
-              {["scope", "build", "test", "release"].map((step) => (
-                <div key={step} className="flex items-center gap-3 rounded-md border border-paper/20 px-3 py-2 text-sm">
-                  <span className="h-2 w-2 rounded-full bg-coral" />
-                  {step}
+            <div className="mt-4 space-y-3">
+              {releaseItems.map(([label, value]) => (
+                <div key={label} className="flex items-center justify-between gap-3 text-sm">
+                  <span className="flex items-center gap-2 font-semibold text-muted">
+                    <span className="h-2 w-2 rounded-full bg-moss" />
+                    {label}
+                  </span>
+                  <span className="font-black text-ink">{value}</span>
                 </div>
               ))}
-            </div>
-          </div>
-          <div className="grid gap-3">
-            <div className="rounded-md border border-line bg-paper-deep p-4">
-              <Blocks className="text-moss" />
-              <p className="mt-5 text-lg font-black">Product-minded architecture</p>
-              <p className="mt-2 text-sm leading-6 text-muted">APIs, queues, storage, and status are designed as one product surface.</p>
-            </div>
-            <div className="rounded-md border border-line bg-paper-deep p-4">
-              <Send className="text-blue" />
-              <p className="mt-5 text-lg font-black">Mobile flow discipline</p>
-              <p className="mt-2 text-sm leading-6 text-muted">Typed routes, persisted state, native interactions, and screens that keep moving.</p>
             </div>
           </div>
         </div>
       </div>
       <div className="mt-5 grid grid-cols-2 gap-3 text-sm text-muted sm:grid-cols-4">
-        {["React Native", "Go APIs", "System design", "App Store"].map((item) => (
+        {["React Native", "Expo", "RTK Query", "App Store"].map((item) => (
           <span key={item} className="rounded-md border border-line bg-paper px-3 py-2 text-center font-semibold">
             {item}
           </span>
@@ -142,15 +149,67 @@ function HeroArtifact() {
       </div>
       <div className="mt-3 grid gap-3 sm:grid-cols-3">
         {[
-          ["4+ years", "mobile and backend"],
-          ["10k+ users", "healthtech scale"],
+          ["4+ years", "React Native work"],
           ["5+ apps", "store releases"],
+          ["Live apps", "iOS and Android"],
         ].map(([value, label]) => (
           <div key={value} className="rounded-md border border-line bg-paper-deep px-4 py-3">
             <p className="text-xl font-black text-ink">{value}</p>
             <p className="mt-1 text-xs font-semibold uppercase tracking-normal text-muted">{label}</p>
           </div>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function HeroPhone({ variant }: { variant: "primary" | "secondary" }) {
+  const isPrimary = variant === "primary";
+
+  return (
+    <div
+      className={`hero-phone ${
+        isPrimary
+          ? "hero-phone-primary relative z-10 mx-auto h-[370px] w-[194px] sm:h-[410px] sm:w-[216px]"
+          : "hero-phone-secondary absolute left-0 top-12 hidden h-[310px] w-[164px] sm:block"
+      } rounded-[2rem] border-[8px] border-ink bg-ink p-2 shadow-artifact`}
+    >
+      <div className="h-full overflow-hidden rounded-[1.45rem] bg-paper">
+        <div className="flex items-center justify-between border-b border-line px-4 py-3">
+          <span className="h-1.5 w-10 rounded-full bg-line" />
+          <span className={`h-6 w-6 rounded-full ${isPrimary ? "bg-coral" : "bg-moss"}`} />
+        </div>
+
+        {isPrimary ? (
+          <div className="p-4">
+            <div className="overflow-hidden rounded-md bg-ink p-3.5 text-paper">
+              <p className="text-xs font-semibold text-paper/65">Bvndle</p>
+              <p className="mt-3 text-2xl font-black leading-none">Rewards</p>
+              <p className="mt-2 text-xs text-paper/65">wallet, KYC, pay</p>
+            </div>
+            <div className="mt-4 grid grid-cols-2 gap-2">
+              <span className="h-16 rounded-md bg-coral/70" />
+              <span className="h-16 rounded-md bg-moss/70" />
+            </div>
+            <div className="mt-4 space-y-2">
+              <span className="block h-3 w-4/5 rounded-full bg-line" />
+              <span className="block h-3 w-3/5 rounded-full bg-line" />
+              <span className="block h-10 rounded-md border border-line bg-paper-deep" />
+            </div>
+          </div>
+        ) : (
+          <div className="p-3">
+            <div className="rounded-md bg-moss p-3 text-paper">
+              <p className="text-xs font-semibold text-paper/75">Nara</p>
+              <p className="mt-2 text-xl font-black leading-none">Wellbeing</p>
+            </div>
+            <div className="mt-3 space-y-2">
+              <span className="block h-10 rounded-md bg-paper-deep" />
+              <span className="block h-10 rounded-md bg-gold/45" />
+              <span className="block h-10 rounded-md bg-blue/30" />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -163,10 +222,10 @@ function SelectedWork() {
         <div className="max-w-3xl" data-reveal="up">
           <p className="font-semibold text-coral">Selected work</p>
           <h2 className="mt-3 text-[clamp(2.2rem,5vw,4.8rem)] font-black leading-none text-ink">
-            Mobile products built for real users and release cycles.
+            React Native apps shipped into real release cycles.
           </h2>
           <p className="mt-6 max-w-2xl leading-7 text-muted">
-            React Native work across finance, therapy, football, moments, and super-app flows.
+            Finance, therapy, football, moments, and super-app work, with live store links where the products are public.
           </p>
         </div>
 
@@ -323,7 +382,7 @@ function StrengthsSection() {
           <div data-reveal="left">
             <p className="font-semibold text-coral">How I work</p>
             <h2 className="mt-3 text-[clamp(2.1rem,4.5vw,4.2rem)] font-black leading-none">
-              I like the hard middle of mobile and backend work.
+              Senior mobile work is architecture, feel, and follow-through.
             </h2>
           </div>
           <div className="divide-y divide-paper/20 border-y border-paper/20">
@@ -356,16 +415,23 @@ function StackSection() {
           <div data-reveal="left">
             <p className="font-semibold text-coral">Working stack</p>
             <h2 className="mt-3 text-[clamp(2.1rem,4vw,4rem)] font-black leading-none text-ink">
-              Mobile, backend, and integration tools.
+              React Native first, with the release tools around it.
             </h2>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {stackGroups.map((group) => (
-              <div key={group.title} className="rounded-lg border border-line bg-paper-deep p-5" data-reveal="up">
-                <h3 className="text-xl font-black text-ink">{group.title}</h3>
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-[1.25fr_0.9fr_0.9fr]">
+            {stackGroups.map((group, index) => (
+              <div
+                key={group.title}
+                className={`rounded-lg border border-line bg-paper-deep p-5 ${index === 0 ? "sm:col-span-2 xl:col-span-1 xl:bg-ink xl:text-paper" : ""}`}
+                data-reveal="up"
+              >
+                <h3 className={`text-xl font-black ${index === 0 ? "text-ink xl:text-paper" : "text-ink"}`}>{group.title}</h3>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {group.items.map((item) => (
-                    <span key={item} className="rounded-md bg-paper px-3 py-1.5 text-sm font-semibold text-muted shadow-inset">
+                    <span
+                      key={item}
+                      className={`rounded-md px-3 py-1.5 text-sm font-semibold shadow-inset ${index === 0 ? "bg-paper text-muted xl:bg-paper/10 xl:text-paper/75" : "bg-paper text-muted"}`}
+                    >
                       {item}
                     </span>
                   ))}
@@ -384,9 +450,9 @@ function ContactSection() {
     <footer id="contact" className="border-t border-line bg-coral py-14 text-ink" data-reveal="up">
       <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
         <div>
-          <p className="font-semibold">Available for serious product work.</p>
+          <p className="font-semibold">Available for senior React Native work.</p>
           <h2 className="mt-3 max-w-3xl text-[clamp(2.2rem,5vw,5.6rem)] font-black leading-none">
-            Bring me the mobile or backend build.
+            Bring me the mobile app build.
           </h2>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row lg:pb-2">

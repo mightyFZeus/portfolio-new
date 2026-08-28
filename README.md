@@ -1,6 +1,6 @@
 # Bolarin Olabisi Portfolio
 
-A focused one-page portfolio for product engineering work across mobile apps, Go services, backend systems, and system design.
+A focused one-page portfolio for senior React Native work across mobile products, app releases, integrations, and system design.
 
 ## Stack
 
@@ -13,7 +13,7 @@ A focused one-page portfolio for product engineering work across mobile apps, Go
 - ESLint, PostCSS, Autoprefixer
 - npm
 
-Redux Toolkit, RTK Query, Remotion, and API slices were intentionally left out of this portfolio app because the site is static and does not need client-side application state or backend request orchestration.
+Redux Toolkit, RTK Query, Remotion, and API slices were intentionally left out of this portfolio app because the site is static and does not need client-side application state or request orchestration.
 
 ## Scripts
 

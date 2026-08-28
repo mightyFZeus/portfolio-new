@@ -101,6 +101,46 @@ a:active {
   will-change: auto;
 }
 
+.hero-device-stage {
+  background-image:
+    linear-gradient(oklch(var(--ink) / 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(var(--ink) / 0.045) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.hero-device-stage::after {
+  position: absolute;
+  right: 9%;
+  bottom: 18%;
+  width: 44%;
+  height: 38%;
+  content: "";
+  border: 1px solid oklch(var(--ink) / 0.12);
+  border-radius: 8px;
+  transform: rotate(-4deg);
+}
+
+.hero-phone {
+  transform-origin: 50% 80%;
+  animation: hero-phone-float 5.2s var(--ease-out-quint) infinite;
+}
+
+.hero-phone-primary {
+  --phone-rotate: 2deg;
+}
+
+.hero-phone-secondary {
+  --phone-rotate: -6deg;
+}
+
+.hero-phone:nth-of-type(1) {
+  animation-delay: 420ms;
+}
+
+.release-card {
+  animation: release-card-rise 760ms var(--ease-out-expo) 260ms both;
+}
+
 .system-map {
   background-image:
     linear-gradient(oklch(var(--paper) / 0.08) 1px, transparent 1px),
@@ -187,6 +227,29 @@ a:active {
 
   to {
     background-position: 42px 42px, 42px 42px;
+  }
+}
+
+@keyframes hero-phone-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--phone-rotate, 0deg));
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(var(--phone-rotate, 0deg));
+  }
+}
+
+@keyframes release-card-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

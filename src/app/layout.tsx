@@ -3,9 +3,9 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Bolarin Olabisi | Product Engineer",
+  title: "Bolarin Olabisi | Senior React Native Developer",
   description:
-    "Portfolio of Bolarin Olabisi, a product engineer building mobile apps, Go services, and backend systems.",
+    "Portfolio of Bolarin Olabisi, a senior React Native developer shipping mobile apps across healthtech, fintech, and consumer products.",
 };
 
 export const viewport: Viewport = {

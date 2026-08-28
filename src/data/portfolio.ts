@@ -2,15 +2,15 @@ export const profile = {
   name: "Bolarin Olabisi",
   initials: "BO",
   handle: "bolarinolabisi",
-  role: "Product Engineer",
+  role: "Senior React Native Developer",
   location: "Lagos, building for remote teams",
   github: "https://github.com/mightyFZeus",
   linkedin: "https://linkedin.com/in/bolarinolabisi",
   email: "bolarinolabisi36@gmail.com",
   cv: "/bolarin-olabisi-cv.pdf",
-  headline: "Mobile apps. Backend systems. Product delivery.",
+  headline: "Senior React Native Developer.",
   intro:
-    "Product engineer with 4+ years across healthtech and fintech. The work spans React Native apps, Go APIs, realtime systems, secure integrations, and app releases used by real customers.",
+    "Senior React Native developer with 4+ years shipping mobile apps across healthtech, fintech, football, and consumer products. I focus on clean app architecture, native-feeling interactions, reliable state, integrations, QA, and app-store releases.",
 };
 
 export const mobileProjects = [
@@ -56,7 +56,7 @@ export const mobileProjects = [
     title: "Anchoria",
     status: "Available for testing",
     summary:
-      "A super-app experience with stock and trading features, reusable mobile components, API helpers, navigation, and state.",
+      "A super-app experience with stock and trading features, reusable mobile components, data helpers, navigation, and state.",
     focus: ["Trading flows", "React Native", "Redux", "TestFlight"],
     links: [],
   },
@@ -91,38 +91,38 @@ export const systemDesigns = [
 
 export const strengths = [
   {
-    title: "Product architecture",
-    body: "Service boundaries, request flows, data models, queues, and product states mapped early enough to guide implementation.",
+    title: "React Native architecture",
+    body: "Feature structure, typed navigation, reusable primitives, persisted state, and app flows that stay maintainable as the product grows.",
   },
   {
-    title: "Realtime and async UX",
-    body: "Queues, streaming responses, WebSockets, retry states, and status surfaces that prevent users from sitting in mystery.",
+    title: "Native-feeling product UX",
+    body: "Bottom sheets, gestures, loading states, empty states, forms, and transitions tuned so the app feels deliberate on real devices.",
   },
   {
-    title: "Mobile product systems",
-    body: "React Native flows with typed navigation, persisted state, native-feeling controls, and shared primitives that do not fight the team.",
+    title: "State and data flow",
+    body: "RTK Query, Redux, Firebase, MMKV, sockets, retries, and sync states shaped into screens users can actually trust.",
   },
   {
-    title: "Backend edges",
-    body: "Go APIs, auth, webhooks, storage, database models, and the small security details that make prototypes feel serious.",
+    title: "Release ownership",
+    body: "TestFlight, Play Store testing, App Store submission, Fastlane, QA loops, crash follow-up, and the details between build and launch.",
   },
   {
-    title: "Live app delivery",
-    body: "Store releases, TestFlight/internal testing, QA loops, analytics, payment setup, and the release details that turn builds into products.",
+    title: "Integration polish",
+    body: "Payments, maps, auth, push messaging, media uploads, analytics, and realtime features wired with clear failure states.",
   },
 ] as const;
 
 export const stackGroups = [
   {
-    title: "Mobile",
+    title: "React Native",
     items: ["React Native", "Expo", "React Navigation", "MMKV", "Reanimated", "Native modules", "App Store", "Play Store"],
   },
   {
-    title: "Backend",
-    items: ["Go", "REST APIs", "JWT", "Firebase Auth", "PostgreSQL", "Firestore", "Redis", "WebSockets"],
+    title: "Mobile delivery",
+    items: ["TypeScript", "Redux Toolkit", "RTK Query", "Firebase", "Fastlane", "TestFlight", "QA", "Release builds"],
   },
   {
     title: "Integrations",
-    items: ["Stripe", "Paystack", "Google Calendar", "Google Maps", "Cloudinary", "Socket.io", "Push messaging", "Payment gateways"],
+    items: ["Stripe", "Paystack", "Google Maps", "Cloudinary", "Socket.io", "Push messaging", "Analytics", "Payment gateways"],
   },
 ] as const;
