@@ -1,13 +1,39 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export function ScrollReveal() {
+  const progress = useRef<HTMLSpanElement>(null);
+
   useEffect(() => {
     const root = document.documentElement;
-    const elements = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
+    const elements = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-reveal]"),
+    );
 
-    root.classList.add("reveal-ready");
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const syncMotion = () =>
+      root.classList.toggle("reveal-ready", !motion.matches);
+    syncMotion();
+    motion.addEventListener("change", syncMotion);
+
+    let frame = 0;
+    const updateProgress = () => {
+      const available = root.scrollHeight - window.innerHeight;
+      const fraction =
+        available > 0
+          ? Math.min(1, Math.max(0, window.scrollY / available))
+          : 0;
+      if (progress.current)
+        progress.current.style.transform = `scaleX(${fraction})`;
+      frame = 0;
+    };
+    const requestProgress = () => {
+      if (!frame) frame = requestAnimationFrame(updateProgress);
+    };
+    updateProgress();
+    window.addEventListener("scroll", requestProgress, { passive: true });
+    window.addEventListener("resize", requestProgress);
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -37,9 +63,17 @@ export function ScrollReveal() {
 
     return () => {
       observer.disconnect();
+      cancelAnimationFrame(frame);
+      motion.removeEventListener("change", syncMotion);
+      window.removeEventListener("scroll", requestProgress);
+      window.removeEventListener("resize", requestProgress);
       root.classList.remove("reveal-ready");
     };
   }, []);
 
-  return null;
+  return (
+    <div className="scroll-progress" aria-hidden="true">
+      <span ref={progress} />
+    </div>
+  );
 }
