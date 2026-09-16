@@ -58,7 +58,10 @@ export const mobileProjects = [
     summary:
       "A super-app experience with stock and trading features, reusable mobile components, data helpers, navigation, and state.",
     focus: ["Trading flows", "React Native", "Redux", "TestFlight"],
-    links: [],
+    links: [
+      { label: "iOS TestFlight", href: "https://testflight.apple.com/join/Nd3Jrmjk" },
+      { label: "Android testing", href: "https://play.google.com/store/apps/details?id=com.seeds.anchoria" },
+    ],
   },
   {
     title: "UEFC",
