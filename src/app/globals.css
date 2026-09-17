@@ -935,31 +935,44 @@ h2 {
   }
   .hero {
     min-height: 0;
-    padding-top: 28px;
+    padding-top: 38px;
   }
   .hero-copy {
     width: 100%;
+    text-align: center;
   }
   .hero .role-label {
     font-size: 11px;
+    justify-content: center;
   }
   .hero h1 {
     font-size: 60px;
     line-height: 1.04;
-    margin-block: 18px 16px;
+    margin-block: 22px;
   }
   .hero-intro {
     font-size: 16px;
     line-height: 1.55;
     max-width: 30ch;
+    margin-inline: auto;
+    text-wrap: balance;
+  }
+  .hero-intro .desktop-break {
+    display: none;
   }
   .hero-location {
-    font-size: 10px;
+    font-size: 11px;
+    margin: 14px auto 0;
     max-width: none;
   }
+  .hero-location > span {
+    display: block;
+  }
   .hero-actions {
-    gap: 25px;
-    margin-top: 18px;
+    gap: 24px;
+    margin-top: 26px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
   .hero-actions .button {
     padding-inline: 17px;
@@ -972,6 +985,8 @@ h2 {
   .hero-bottom {
     position: relative;
     padding-block: 17px;
+    justify-content: center;
+    text-align: center;
   }
   .hero-bottom > div {
     display: none;

@@ -481,31 +481,35 @@
 @media (max-width: 600px) {
   .kinetic-stage {
     position: relative;
-    width: min(100% - 36px, 320px);
-    margin: 20px auto 15px;
+    width: min(100%, 340px);
+    margin: 38px auto 30px;
     right: auto;
     top: auto;
-    padding: 8px 0;
+    padding: 0;
+  }
+  .kinetic-scroll {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+    gap: 6px;
   }
   .kinetic-word {
-    font-size: 54px;
+    font-size: 30px;
   }
   .kinetic-line {
-    padding-block: 2px;
-    padding-inline: 18px;
-    gap: 16px;
+    justify-content: center;
+    padding: 7px 4px;
+    gap: 0;
+    transform: none;
   }
-  .kinetic-number {
-    width: 18px;
-    font-size: 9px;
+  .kinetic-line-1 {
+    margin-block: 0;
+    transform: rotate(-5deg);
   }
-  .kinetic-caption {
-    margin: 15px 18px 0;
-    font-size: 9px;
-  }
+  .kinetic-number,
+  .kinetic-caption,
   .kinetic-arrow {
-    width: 32px;
-    height: 32px;
+    display: none;
   }
   .featured-project .project-title-row {
     margin-block: 25px 14px;
@@ -539,14 +543,7 @@
 }
 @media (max-width: 359px) {
   .kinetic-word {
-    font-size: 46px;
-  }
-  .kinetic-line {
-    padding-inline: 12px;
-  }
-  .kinetic-caption {
-    font-size: 8px;
-    margin-top: 12px;
+    font-size: 26px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

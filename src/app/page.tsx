@@ -68,7 +68,7 @@ function HeroSection() {
           <br className="desktop-break" /> and keep improving them.
         </p>
         <p className="hero-location">
-          Based in Lagos. Building with teams everywhere.
+          Based in Lagos. <span>Building with teams everywhere.</span>
         </p>
         <div className="hero-actions">
           <a className="button button-primary" href="#work">
