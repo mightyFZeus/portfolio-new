@@ -293,6 +293,14 @@ function AboutSection() {
               <small>
                 Getting deeper into how applications run beyond the code.
               </small>
+              <a
+                href="https://github.com/mightyFZeus/cloud-engineering"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-link"
+              >
+                Follow along on GitHub <ArrowUpRight size={16} aria-hidden="true" />
+              </a>
             </div>
           </aside>
         </div>
