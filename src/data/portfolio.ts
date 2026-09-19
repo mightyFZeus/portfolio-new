@@ -85,10 +85,6 @@ export const mobileProjects = [
         label: "iOS TestFlight",
         href: "https://testflight.apple.com/join/Nd3Jrmjk",
       },
-      {
-        label: "Android testing",
-        href: "https://play.google.com/store/apps/details?id=com.seeds.anchoria",
-      },
     ],
   },
   {
