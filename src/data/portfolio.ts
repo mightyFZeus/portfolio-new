@@ -82,8 +82,12 @@ export const mobileProjects = [
     focus: ["Trading flows", "React Native", "Redux", "TestFlight"],
     links: [
       {
-        label: "iOS TestFlight",
-        href: "https://testflight.apple.com/join/Nd3Jrmjk",
+        label: "iOS App Store",
+        href: "https://apps.apple.com/ng/app/anchoria/id6762124871",
+      },
+      {
+        label: "Android Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.seeds.anchoria",
       },
     ],
   },
