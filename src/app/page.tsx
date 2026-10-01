@@ -39,8 +39,8 @@ export default function Home() {
       <SiteHeader />
       <main id="main">
         <HeroSection />
-        <SelectedWork />
         <AboutSection />
+        <SelectedWork />
         <BackendSection />
         <AIWorkflowSection />
         <SystemDesignSection />

@@ -5,8 +5,8 @@ import { ArrowUpRight, Download, Menu, X } from "lucide-react";
 import { profile } from "@/data/portfolio";
 
 const links = [
-  ["Work", "#work"],
   ["About", "#about"],
+  ["Work", "#work"],
   ["Backend", "#backend"],
   ["Workflow", "#workflow"],
   ["Systems", "#systems"],
