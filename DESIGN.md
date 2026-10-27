@@ -2,7 +2,7 @@
 
 ## Direction
 
-A dark personal portfolio for Bolarin Olabisi. The intended visitor is evaluating mobile engineering work on a laptop or phone. White typography leads, with a kinetic composition of "think / build / ship" responding gently to pointer movement. No App Store screenshots, stock images, or mock devices. Confident, precise, hands-on.
+A dark personal portfolio for Bolarin Olabisi. The intended visitor is evaluating mobile engineering work on a laptop or phone. White typography leads, with interactive "think / build / ship" choices explaining his approach. A full-bleed canvas of fine flowing lines responds gently to pointer movement behind the hero. No App Store screenshots, stock images, or mock devices. Confident, precise, hands-on.
 
 ## Color
 
@@ -14,11 +14,11 @@ Self-hosted Manrope variable, weights 400-800. Large personal name, medium-weigh
 
 ## Layout
 
-Maximum content width 1240px with generous desktop gutters. The hero has original interactive typography. Featured projects use prominent titles, concise descriptions, and store links. Other mobile projects use a compact two-column list, collapsing to one column on mobile. System designs are horizontal rows. Backend skills have their own supporting section, and cloud learning is a small note in the about area. AI development and Codex workflow use an unframed section with a numbered sequence that stacks on mobile.
+Maximum content width 1240px with generous desktop gutters. The hero has original interactive typography, with a compact horizontal selector on mobile and a shorter layout for short screens. About follows the hero. Featured projects use full-width rows with prominent titles, concise descriptions, and store links, stacking their contents on mobile. Other mobile projects use a compact two-column list, collapsing to one column on mobile. System designs are horizontal rows. Backend skills have their own supporting section, and cloud learning is a small note in the about area. AI development and Codex workflow use an unframed section with a numbered sequence that stacks on mobile.
 
 ## Components and Motion
 
-Four-pixel command buttons, an outlined resume link, native disclosures for expertise, and a compact mobile navigation menu. Staggered entrances, a reading-progress line, responsive button presses, moving link underlines, and subtle pointer response use transform and opacity. Reduced motion removes decorative movement and reveal delays.
+Four-pixel command buttons, an outlined resume link, native disclosures for expertise, and a compact mobile navigation menu. Staggered entrances, a reading-progress line, responsive button presses, moving link underlines, and subtle pointer response use transform and opacity. The hero approach selector uses native buttons with pressed states and an announced, height-reserved detail area. Canvas motion has a pause/resume control, runs at most 30fps, and stops offscreen or when the page is hidden. Reduced motion keeps the canvas static and removes decorative movement and reveal delays.
 
 ## Content
 

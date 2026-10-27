@@ -1,63 +1,106 @@
+.hero-field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.motion-toggle {
+  position: absolute;
+  right: max(48px, calc((100% - 1240px) / 2));
+  bottom: 14px;
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: oklch(var(--muted));
+  background: oklch(var(--background));
+  border: 1px solid oklch(var(--line));
+  border-radius: 50%;
+  transition: color 180ms, border-color 180ms;
+}
+.motion-toggle:hover:not(:disabled) {
+  border-color: oklch(var(--accent));
+  color: oklch(var(--accent));
+}
+.motion-toggle:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
 .kinetic-stage {
   position: absolute;
-  right: 2%;
-  top: 88px;
-  width: 43%;
-  padding: 18px 0;
-  user-select: none;
+  right: 0;
+  top: 72px;
+  width: 42%;
 }
-.kinetic-row {
-  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+.kinetic-choices {
+  display: grid;
+  gap: 5px;
 }
-.kinetic-line {
+.kinetic-choice {
   display: flex;
   align-items: center;
-  gap: 22px;
-  padding: 6px 22px;
-  transform-origin: center;
+  gap: 20px;
+  width: 100%;
+  min-height: 98px;
+  padding: 6px 20px;
+  border: 0;
+  border-bottom: 1px solid oklch(var(--line) / 0.65);
+  background: transparent;
+  color: oklch(var(--foreground) / 0.65);
+  text-align: left;
+  transition: transform 450ms var(--ease), background-color 250ms, color 250ms;
+}
+.kinetic-choice[aria-pressed="true"] {
+  background: oklch(var(--accent));
+  color: oklch(var(--background));
+  border-color: transparent;
+  transform: rotate(-3deg);
 }
 .kinetic-word {
-  font-size: 86px;
-  font-weight: 700;
-  line-height: 1.15;
+  font-size: 80px;
+  font-weight: 600;
+  line-height: 1;
 }
 .kinetic-number {
   width: 20px;
   font-size: 10px;
   opacity: 0.6;
 }
-.kinetic-line-0 {
-  transform: rotate(-5deg);
-}
-.kinetic-line-0 .kinetic-word {
-  color: transparent;
-  -webkit-text-stroke: 1px oklch(var(--foreground) / 0.65);
-}
-.kinetic-line-1 {
-  background: oklch(var(--accent));
-  color: oklch(var(--background));
-  transform: rotate(-5deg);
-  margin-block: 6px;
-}
-.kinetic-line-2 {
-  transform: rotate(-5deg);
-}
-.kinetic-line-2 .kinetic-word {
-  color: oklch(var(--foreground));
-}
 .kinetic-arrow {
   margin-left: auto;
-  width: 44px;
-  height: 44px;
-  transition: transform 450ms cubic-bezier(0.22, 1, 0.36, 1);
+  width: 38px;
+  height: 38px;
+  opacity: 0.3;
+  transition: transform 350ms var(--ease), opacity 250ms;
 }
-.kinetic-caption {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 32px 22px 0;
-  font-size: 10px;
+.kinetic-choice[aria-pressed="true"] .kinetic-arrow {
+  opacity: 1;
+  transform: rotate(45deg);
+}
+.kinetic-detail {
+  margin: 30px 20px 0;
+  min-height: 100px;
+  max-width: 37ch;
+}
+.kinetic-detail-copy {
+  animation: approach-enter 350ms var(--ease) both;
+}
+.kinetic-detail span {
+  font-size: 11px;
+  color: oklch(var(--accent));
+}
+.kinetic-detail p {
+  margin-top: 9px;
+  font-size: 13px;
+  line-height: 1.75;
   color: oklch(var(--muted));
+}
+@keyframes approach-enter {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .scroll-progress {
   position: fixed;
@@ -78,8 +121,18 @@
 
 .featured-project {
   position: relative;
-  padding-block: 27px 24px;
-  border-block: 1px solid oklch(var(--line));
+  padding-block: 28px 30px;
+  border-top: 1px solid oklch(var(--line));
+}
+.featured-project:last-child {
+  border-bottom: 1px solid oklch(var(--line));
+}
+.featured-project-body {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 48px;
+  padding-block: 22px 28px;
 }
 .featured-project::before {
   content: "";
@@ -110,10 +163,10 @@
   color: oklch(var(--foreground));
 }
 .featured-project .project-title-row {
-  margin-block: 34px 15px;
+  margin: 0;
 }
 .featured-project .project-title-row h3 {
-  font-size: 44px;
+  font-size: 64px;
   font-weight: 500;
   transition:
     transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -121,9 +174,13 @@
 }
 .featured-project .project-description {
   max-width: 43ch;
+  font-size: 15px;
 }
 .featured-project .project-meta {
-  margin-top: 22px;
+  margin-top: 0;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   gap: 15px;
 }
 .project-index {
@@ -348,8 +405,12 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .kinetic-stage:hover .kinetic-arrow {
-    transform: rotate(45deg);
+  .kinetic-choice:hover:not([aria-pressed="true"]) {
+    color: oklch(var(--foreground));
+    transform: translateX(8px);
+  }
+  .kinetic-choice:hover .kinetic-arrow {
+    opacity: 1;
   }
   .featured-project:hover::before,
   .featured-project:focus-within::before {
@@ -378,7 +439,7 @@
 }
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .kinetic-scroll {
+    .kinetic-stage {
       animation: kinetic-exit linear both;
       animation-timeline: view();
       animation-range: exit 0% exit 100%;
@@ -397,14 +458,15 @@
 }
 @media (max-width: 1100px) {
   .kinetic-stage {
-    right: 1%;
+    right: 0;
     width: 43%;
-    top: 123px;
+    top: 100px;
   }
   .kinetic-word {
     font-size: 66px;
   }
-  .kinetic-line {
+  .kinetic-choice {
+    min-height: 82px;
     padding-inline: 15px;
     gap: 13px;
   }
@@ -424,9 +486,10 @@
   }
 }
 @media (max-width: 760px) {
+  .motion-toggle { right: 20px; }
   .kinetic-stage {
     width: 42%;
-    top: 132px;
+    top: 105px;
   }
   .kinetic-word {
     font-size: 49px;
@@ -435,21 +498,24 @@
     width: 12px;
     font-size: 8px;
   }
-  .kinetic-line {
-    padding-inline: 12px;
+  .kinetic-choice {
+    min-height: 66px;
+    padding-inline: 10px;
     gap: 9px;
   }
   .kinetic-arrow {
     width: 25px;
     height: 25px;
   }
-  .kinetic-caption {
-    font-size: 8px;
-    gap: 6px;
-    margin-left: 9px;
+  .kinetic-detail {
+    margin: 25px 10px 0;
+    min-height: 135px;
+  }
+  .kinetic-detail p {
+    font-size: 12px;
   }
   .featured-project .project-title-row h3 {
-    font-size: 32px;
+    font-size: 40px;
   }
   .featured-category {
     font-size: 9px;
@@ -479,16 +545,16 @@
   }
 }
 @media (max-width: 600px) {
+  .motion-toggle { bottom: 4px; }
   .kinetic-stage {
     position: relative;
     width: min(100%, 340px);
-    margin: 38px auto 30px;
+    margin: 26px auto 15px;
     right: auto;
     top: auto;
     padding: 0;
   }
-  .kinetic-scroll {
-    display: grid;
+  .kinetic-choices {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: center;
     gap: 6px;
@@ -496,23 +562,33 @@
   .kinetic-word {
     font-size: 30px;
   }
-  .kinetic-line {
+  .kinetic-choice {
     justify-content: center;
-    padding: 7px 4px;
+    min-height: 48px;
+    padding: 8px 4px;
     gap: 0;
-    transform: none;
   }
-  .kinetic-line-1 {
-    margin-block: 0;
-    transform: rotate(-5deg);
+  .kinetic-detail {
+    margin: 16px auto 0;
+    min-height: 88px;
+    max-width: 35ch;
+    text-align: center;
   }
   .kinetic-number,
-  .kinetic-caption,
   .kinetic-arrow {
     display: none;
   }
+  .featured-project-body {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding-block: 22px;
+  }
+  .featured-project .project-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   .featured-project .project-title-row {
-    margin-block: 25px 14px;
+    margin: 0;
   }
   .featured-project .project-title-row h3 {
     font-size: 38px;
@@ -546,11 +622,23 @@
     font-size: 26px;
   }
 }
+@media (min-width: 761px) and (max-height: 800px) {
+  .kinetic-stage { top: 42px; }
+  .kinetic-choice { min-height: 76px; }
+  .kinetic-word { font-size: 64px; }
+  .kinetic-detail { margin-top: 20px; min-height: 86px; }
+}
+@media (max-width: 600px) and (max-height: 740px) {
+  .kinetic-stage { margin-block: 24px 12px; }
+  .kinetic-detail { margin-top: 14px; min-height: 72px; }
+  .kinetic-detail p { font-size: 11px; line-height: 1.6; }
+}
 @media (prefers-reduced-motion: reduce) {
-  .kinetic-row,
-  .kinetic-scroll {
+  .kinetic-stage {
+    animation: none !important;
     transform: none !important;
   }
+  .kinetic-detail-copy { animation: none; }
   .kinetic-arrow,
   .workflow-step:hover .workflow-step-marker > svg,
   .featured-project:hover h3,

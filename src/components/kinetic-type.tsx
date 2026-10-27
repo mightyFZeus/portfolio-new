@@ -1,75 +1,51 @@
 "use client";
 
-import { ArrowUpRight, Code2 } from "lucide-react";
-import { useEffect, useRef, type PointerEvent } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+
+const approach = [
+  {
+    word: "think.",
+    label: "The product",
+    detail: "Understand the people and the problem. Help shape what is worth building.",
+  },
+  {
+    word: "build.",
+    label: "The craft",
+    detail: "Thoughtful architecture, secure foundations, and the details that make an app feel native.",
+  },
+  {
+    word: "ship.",
+    label: "The follow-through",
+    detail: "Own the release. Listen to the people using it. Keep making the product better.",
+  },
+];
 
 export function KineticType() {
-  const rows = useRef<Array<HTMLDivElement | null>>([]);
-  const frame = useRef(0);
-  const reducedMotion = useRef(true);
-
-  useEffect(() => {
-    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updatePreference = () => {
-      reducedMotion.current = preference.matches;
-      if (preference.matches)
-        rows.current.forEach((row) => row?.style.removeProperty("transform"));
-    };
-    updatePreference();
-    preference.addEventListener("change", updatePreference);
-    return () => {
-      cancelAnimationFrame(frame.current);
-      preference.removeEventListener("change", updatePreference);
-    };
-  }, []);
-
-  const move = (event: PointerEvent<HTMLDivElement>) => {
-    if (reducedMotion.current || event.pointerType !== "mouse") return;
-    const bounds = event.currentTarget.getBoundingClientRect();
-    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
-    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-    cancelAnimationFrame(frame.current);
-    frame.current = requestAnimationFrame(() => {
-      rows.current.forEach((row, index) => {
-        if (row)
-          row.style.transform = `translate(${x * (index + 1) * 12}px, ${y * 12}px)`;
-      });
-    });
-  };
-
-  const reset = () => {
-    cancelAnimationFrame(frame.current);
-    rows.current.forEach((row) => row?.style.removeProperty("transform"));
-  };
+  const [active, setActive] = useState(1);
 
   return (
-    <div
-      className="kinetic-stage reveal-delay"
-      aria-hidden="true"
-      onPointerMove={move}
-      onPointerLeave={reset}
-    >
-      <div className="kinetic-scroll">
-        {["think.", "build.", "ship."].map((word, index) => (
-          <div
-            key={word}
-            className="kinetic-row"
-            ref={(element) => {
-              rows.current[index] = element;
-            }}
+    <div className="kinetic-stage reveal-delay">
+      <div className="kinetic-choices" role="group" aria-label="My approach to building products">
+        {approach.map((step, index) => (
+          <button
+            key={step.word}
+            className="kinetic-choice"
+            type="button"
+            aria-pressed={active === index}
+            aria-controls="approach-detail"
+            onClick={() => setActive(index)}
           >
-            <div className={`kinetic-line kinetic-line-${index}`}>
-              <span className="kinetic-number">0{index + 1}</span>
-              <span className="kinetic-word">{word}</span>
-              {index === 1 && (
-                <ArrowUpRight className="kinetic-arrow" strokeWidth={1.25} />
-              )}
-            </div>
-          </div>
+            <span className="kinetic-number" aria-hidden="true">0{index + 1}</span>
+            <span className="kinetic-word">{step.word}</span>
+            <ArrowUpRight className="kinetic-arrow" strokeWidth={1.25} aria-hidden="true" />
+          </button>
         ))}
-        <div className="kinetic-caption">
-          <Code2 size={18} />
-          <span>React Native / iOS / Android</span>
+      </div>
+      <div id="approach-detail" className="kinetic-detail" aria-live="polite" aria-atomic="true">
+        <div key={active} className="kinetic-detail-copy">
+          <span>{approach[active].label}</span>
+          <p>{approach[active].detail}</p>
         </div>
       </div>
     </div>

@@ -166,7 +166,12 @@ svg {
 }
 
 .hero {
-  min-height: 630px;
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+}
+.hero-inner {
+  min-height: 670px;
   position: relative;
   padding-top: 54px;
 }
@@ -191,7 +196,7 @@ svg {
   box-shadow: 0 0 0 4px oklch(var(--accent) / 0.08);
 }
 .hero h1 {
-  font-size: 100px;
+  font-size: 112px;
   font-weight: 600;
   line-height: 1.04;
   margin: 23px 0 23px;
@@ -266,7 +271,8 @@ svg {
   display: flex;
   justify-content: space-between;
   gap: 18px;
-  padding-block: 25px;
+  padding: 25px 56px 25px 0;
+  align-items: center;
   border-top: 1px solid oklch(var(--line) / 0.7);
   font-size: 11px;
   color: oklch(var(--muted));
@@ -274,6 +280,18 @@ svg {
 .hero-bottom > div {
   display: flex;
   gap: 23px;
+}
+.hero-next {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  color: oklch(var(--foreground));
+  transition: transform 220ms var(--ease), color 180ms;
+}
+.hero-next:hover {
+  transform: translateY(3px);
+  color: oklch(var(--accent));
 }
 .hero-bottom > div span + span::before {
   content: "/";
@@ -310,8 +328,8 @@ h2 {
 }
 .featured-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 32px;
+  grid-template-columns: 1fr;
+  gap: 0;
 }
 .featured-project {
   min-width: 0;
@@ -390,8 +408,8 @@ h2 {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  min-height: 30px;
-  font-size: 11px;
+  min-height: 44px;
+  font-size: 12px;
   font-weight: 600;
 }
 .project-links a:hover {
@@ -440,6 +458,7 @@ h2 {
 .about-section {
   background: oklch(var(--surface));
   border-block: 1px solid oklch(var(--line) / 0.45);
+  padding-top: 80px;
 }
 .about-grid {
   display: grid;
@@ -635,7 +654,7 @@ h2 {
   color: oklch(var(--muted));
 }
 .contact-main h2 {
-  font-size: 54px;
+  font-size: 64px;
   margin-top: 27px;
   max-width: 21ch;
 }
@@ -743,18 +762,18 @@ h2 {
 }
 
 @media (min-width: 1500px) {
-  .hero {
-    min-height: 660px;
+  .hero-inner {
+    min-height: 700px;
   }
   .hero h1 {
-    font-size: 108px;
+    font-size: 120px;
   }
 }
 @media (max-width: 1100px) {
   .section-shell {
     width: calc(100% - 64px);
   }
-  .hero {
+  .hero-inner {
     min-height: 630px;
   }
   .hero h1 {
@@ -795,7 +814,7 @@ h2 {
   .desktop-nav a {
     font-size: 11px;
   }
-  .hero {
+  .hero-inner {
     padding-top: 46px;
     min-height: 615px;
   }
@@ -833,7 +852,7 @@ h2 {
     font-size: 39px;
   }
   .featured-grid {
-    gap: 22px;
+    gap: 0;
   }
   .project-title-row h3 {
     font-size: 21px;
@@ -933,9 +952,9 @@ h2 {
     font-size: 15px;
     border-bottom: 1px solid oklch(var(--line) / 0.55);
   }
-  .hero {
+  .hero-inner {
     min-height: 0;
-    padding-top: 38px;
+    padding-top: 32px;
   }
   .hero-copy {
     width: 100%;
@@ -948,7 +967,7 @@ h2 {
   .hero h1 {
     font-size: 60px;
     line-height: 1.04;
-    margin-block: 22px;
+    margin-block: 18px;
   }
   .hero-intro {
     font-size: 16px;
@@ -970,7 +989,7 @@ h2 {
   }
   .hero-actions {
     gap: 24px;
-    margin-top: 26px;
+    margin-top: 22px;
     justify-content: center;
     flex-wrap: wrap;
   }
@@ -988,12 +1007,14 @@ h2 {
     justify-content: center;
     text-align: center;
   }
+  .hero-next { display: none; }
   .hero-bottom > div {
     display: none;
   }
   .work-section {
     padding-top: 40px;
   }
+  .about-section { padding-top: 48px; }
   h2 {
     font-size: 37px;
   }
@@ -1012,7 +1033,7 @@ h2 {
   }
   .featured-grid {
     grid-template-columns: 1fr;
-    gap: 42px;
+    gap: 0;
   }
   .project-title-row {
     margin-top: 19px;
@@ -1171,6 +1192,23 @@ h2 {
   .system-text h3 {
     font-size: 12px;
   }
+}
+@media (min-width: 761px) and (max-height: 800px) {
+  .hero-inner { min-height: 520px; padding-top: 28px; }
+  .hero h1 { font-size: 84px; margin-block: 18px; }
+  .hero-intro { font-size: 18px; }
+  .hero-location { font-size: 11px; margin-top: 10px; }
+  .hero-actions { margin-top: 24px; }
+  .about-section { padding-top: 48px; }
+}
+@media (max-width: 600px) and (max-height: 740px) {
+  .hero-inner { padding-top: 24px; }
+  .hero h1 { font-size: 52px; margin-block: 14px; }
+  .hero-intro { font-size: 15px; }
+  .hero-location { font-size: 10px; margin-top: 10px; }
+  .hero-location > span { display: inline; }
+  .hero-actions { margin-top: 18px; }
+  .about-section { padding-top: 32px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html {

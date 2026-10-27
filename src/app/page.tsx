@@ -17,6 +17,7 @@ import {
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { SiteHeader } from "@/components/site-header";
 import { KineticType } from "@/components/kinetic-type";
+import { HeroField } from "@/components/hero-field";
 import {
   backendSkills,
   codingWorkflow,
@@ -52,40 +53,46 @@ export default function Home() {
 
 function HeroSection() {
   return (
-    <section id="top" className="hero section-shell">
-      <div className="hero-copy reveal">
-        <p className="role-label">
-          <span className="status-dot" />
-          Senior React Native Developer
-        </p>
-        <h1>
-          Bolarin
-          <br />
-          Olabisi<span className="accent">.</span>
-        </h1>
-        <p className="hero-intro">
-          I take mobile products from idea to launch,
-          <br className="desktop-break" /> and keep improving them.
-        </p>
-        <p className="hero-location">
-          Based in Lagos. <span>Building with teams everywhere.</span>
-        </p>
-        <div className="hero-actions">
-          <a className="button button-primary" href="#work">
-            Explore my work <ArrowDown size={17} />
-          </a>
-          <a className="text-link" href={"mailto:" + profile.email}>
-            Let&apos;s talk <ArrowUpRight size={18} />
-          </a>
+    <section id="top" className="hero">
+      <HeroField />
+      <div className="hero-inner section-shell">
+        <div className="hero-copy reveal">
+          <p className="role-label">
+            <span className="status-dot" />
+            Senior React Native Developer
+          </p>
+          <h1>
+            Bolarin
+            <br />
+            Olabisi<span className="accent">.</span>
+          </h1>
+          <p className="hero-intro">
+            I take mobile products from idea to launch,
+            <br className="desktop-break" /> and keep improving them.
+          </p>
+          <p className="hero-location">
+            Based in Lagos. <span>Building with teams everywhere.</span>
+          </p>
+          <div className="hero-actions">
+            <a className="button button-primary" href="#work">
+              Explore my work <ArrowDown size={17} />
+            </a>
+            <a className="text-link" href={"mailto:" + profile.email}>
+              Let&apos;s talk <ArrowUpRight size={18} />
+            </a>
+          </div>
         </div>
-      </div>
-      <KineticType />
-      <div className="hero-bottom reveal-delay">
-        <p>4+ years of building, shipping, and refining.</p>
-        <div>
-          <span>React Native</span>
-          <span>iOS &amp; Android</span>
-          <span>Product ownership</span>
+        <KineticType />
+        <div className="hero-bottom reveal-delay">
+          <p>4+ years of building, shipping, and refining.</p>
+          <div>
+            <span>React Native</span>
+            <span>iOS &amp; Android</span>
+            <span>Product ownership</span>
+          </div>
+          <a href="#about" className="hero-next" aria-label="More about Bolarin">
+            <ArrowDown size={18} aria-hidden="true" />
+          </a>
         </div>
       </div>
     </section>
@@ -207,10 +214,12 @@ function FeaturedProject({
         </span>
         <ProjectStatus status={project.status} />
       </div>
-      <div className="project-title-row">
-        <h3>{project.title}</h3>
+      <div className="featured-project-body">
+        <div className="project-title-row">
+          <h3>{project.title}</h3>
+        </div>
+        <p className="project-description">{project.summary}</p>
       </div>
-      <p className="project-description">{project.summary}</p>
       <div className="project-meta">
         <div className="project-tags">
           {project.focus.slice(0, 3).map((tag) => (
