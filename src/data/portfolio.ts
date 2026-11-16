@@ -15,31 +15,40 @@ export const profile = {
 
 export const mobileProjects = [
   {
-    title: "Bvndle",
-    category: "Rewards & payments",
+    title: "Anchoria",
+    category: "Investing & trading",
     status: "Live",
     summary:
-      "Everyday spending turned into rewards, with coins, payments, and a marketplace in one app.",
-    focus: ["RTK Query", "Firebase", "Fastlane", "KYC"],
+      "An investing super-app bringing stocks, trading, and financial tools together.",
+    focus: ["Trading flows", "React Native", "Redux", "TestFlight"],
     links: [
       {
-        label: "iOS live",
-        href: "https://apps.apple.com/ng/app/bvndle-earn-rewards-and-coins/id6475035022",
+        label: "iOS App Store",
+        href: "https://apps.apple.com/ng/app/anchoria/id6762124871",
       },
       {
-        label: "Android live",
-        href: "https://play.google.com/store/apps/details?id=com.bvndle&pcampaignid=web_share",
+        label: "Android Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.seeds.anchoria",
       },
     ],
   },
   {
-    title: "TipNGo",
-    category: "Tipping & wallets",
-    status: "Available for testing",
+    title: "iWealth",
+    category: "Wealth management",
+    status: "Live",
     summary:
-      "A simpler way to send and receive tips, fund a wallet, and cash out.",
-    focus: ["Wallet UX", "MMKV", "Navigation", "Bottom sheets"],
-    links: [],
+      "Norrenberger's app tracks what you own and owe, shows your net worth, and keeps financial documents and beneficiary details in one place.",
+    focus: [],
+    links: [
+      {
+        label: "iOS App Store",
+        href: "https://apps.apple.com/ng/app/iwealth-by-norrenberger/id6738654559",
+      },
+      {
+        label: "Android Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.norrenberger.iwealth&pcampaignid=web_share",
+      },
+    ],
   },
   {
     title: "NaraTherapy",
@@ -60,6 +69,24 @@ export const mobileProjects = [
     ],
   },
   {
+    title: "Bvndle",
+    category: "Rewards & payments",
+    status: "Live",
+    summary:
+      "Everyday spending turned into rewards, with coins, payments, and a marketplace in one app.",
+    focus: ["RTK Query", "Firebase", "Fastlane", "KYC"],
+    links: [
+      {
+        label: "iOS live",
+        href: "https://apps.apple.com/ng/app/bvndle-earn-rewards-and-coins/id6475035022",
+      },
+      {
+        label: "Android live",
+        href: "https://play.google.com/store/apps/details?id=com.bvndle&pcampaignid=web_share",
+      },
+    ],
+  },
+  {
     title: "MomentsHub",
     category: "Social & community",
     status: "Live",
@@ -74,22 +101,13 @@ export const mobileProjects = [
     ],
   },
   {
-    title: "Anchoria",
-    category: "Investing & trading",
+    title: "TipNGo",
+    category: "Tipping & wallets",
     status: "Available for testing",
     summary:
-      "An investing super-app bringing stocks, trading, and financial tools together.",
-    focus: ["Trading flows", "React Native", "Redux", "TestFlight"],
-    links: [
-      {
-        label: "iOS App Store",
-        href: "https://apps.apple.com/ng/app/anchoria/id6762124871",
-      },
-      {
-        label: "Android Google Play",
-        href: "https://play.google.com/store/apps/details?id=com.seeds.anchoria",
-      },
-    ],
+      "A simpler way to send and receive tips, fund a wallet, and cash out.",
+    focus: ["Wallet UX", "MMKV", "Navigation", "Bottom sheets"],
+    links: [],
   },
   {
     title: "UEFC",

@@ -18,17 +18,15 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { SiteHeader } from "@/components/site-header";
 import { KineticType } from "@/components/kinetic-type";
 import { HeroField } from "@/components/hero-field";
+import { ProjectList } from "@/components/project-list";
 import {
   backendSkills,
   codingWorkflow,
-  mobileProjects,
   profile,
   stackGroups,
   strengths,
   systemDesigns,
 } from "@/data/portfolio";
-
-type Project = (typeof mobileProjects)[number];
 
 export default function Home() {
   return (
@@ -41,7 +39,7 @@ export default function Home() {
       <main id="main">
         <HeroSection />
         <AboutSection />
-        <SelectedWork />
+        <ProjectList />
         <BackendSection />
         <AIWorkflowSection />
         <SystemDesignSection />
@@ -96,172 +94,6 @@ function HeroSection() {
         </div>
       </div>
     </section>
-  );
-}
-
-function SelectedWork() {
-  const featured = [mobileProjects[4], mobileProjects[2]];
-  const other = [
-    mobileProjects[0],
-    mobileProjects[3],
-    mobileProjects[1],
-    mobileProjects[5],
-  ];
-  return (
-    <section id="work" className="work-section section-shell section-space">
-      <div className="section-heading" data-reveal="up">
-        <div>
-          <p className="eyebrow">Selected work</p>
-          <h2>
-            Small screens.
-            <br />
-            Real impact.
-          </h2>
-        </div>
-        <p>
-          Rewards, wellbeing, and everything in between. <br />A few of the
-          mobile products I&apos;ve worked on.
-        </p>
-      </div>
-      <div className="featured-grid">
-        {featured.map((project, index) => (
-          <FeaturedProject
-            key={project.title}
-            project={project}
-            index={index}
-          />
-        ))}
-      </div>
-      <div className="more-work-heading">
-        <h3>More mobile work</h3>
-        <span>04 projects</span>
-      </div>
-      <div className="project-list">
-        {other.map((project, index) => (
-          <CompactProject key={project.title} project={project} index={index} />
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ProjectStatus({ status }: { status: string }) {
-  return (
-    <span
-      className={
-        "project-status " + (status === "Live" ? "is-live" : "is-testing")
-      }
-    >
-      <span />
-      {status === "Live" ? "Live" : "In testing"}
-    </span>
-  );
-}
-
-function ProjectLinks({ project }: { project: Project }) {
-  return (
-    <div className="project-links">
-      {project.links.length ? (
-        project.links.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={project.title + ": " + link.label}
-          >
-            {link.label.includes("TestFlight")
-              ? "TestFlight"
-              : link.label.startsWith("iOS")
-                ? "App Store"
-                : "Google Play"}
-            <ArrowUpRight size={15} />
-          </a>
-        ))
-      ) : (
-        <a
-          href={
-            "mailto:" +
-            profile.email +
-            "?subject=" +
-            encodeURIComponent(project.title + " testing access")
-          }
-        >
-          Request testing access <ArrowUpRight size={15} />
-        </a>
-      )}
-    </div>
-  );
-}
-
-function FeaturedProject({
-  project,
-  index,
-}: {
-  project: Project;
-  index: number;
-}) {
-  return (
-    <article
-      className="featured-project"
-      data-reveal="up"
-      data-reveal-delay={String(index * 90)}
-    >
-      <div className="featured-project-top">
-        <span className="featured-category">
-          <span>0{index + 1}</span>
-          {project.category}
-        </span>
-        <ProjectStatus status={project.status} />
-      </div>
-      <div className="featured-project-body">
-        <div className="project-title-row">
-          <h3>{project.title}</h3>
-        </div>
-        <p className="project-description">{project.summary}</p>
-      </div>
-      <div className="project-meta">
-        <div className="project-tags">
-          {project.focus.slice(0, 3).map((tag) => (
-            <span key={tag}>{tag}</span>
-          ))}
-        </div>
-        <ProjectLinks project={project} />
-      </div>
-    </article>
-  );
-}
-
-function CompactProject({
-  project,
-  index,
-}: {
-  project: Project;
-  index: number;
-}) {
-  return (
-    <article
-      className="compact-project"
-      data-reveal="up"
-      data-reveal-delay={String((index % 2) * 60)}
-    >
-      <div className="compact-project-top">
-        <span className="project-index">0{index + 3}</span>
-        <div>
-          <h3>{project.title}</h3>
-          <ProjectStatus status={project.status} />
-        </div>
-      </div>
-      <p className="project-description">{project.summary}</p>
-      <div className="project-meta">
-        <div className="project-tags">
-          {project.focus.slice(0, 2).map((tag) => (
-            <span key={tag}>{tag}</span>
-          ))}
-        </div>
-        <ProjectLinks project={project} />
-      </div>
-    </article>
   );
 }
 
