@@ -55,7 +55,7 @@ export const mobileProjects = [
     category: "Therapy & wellbeing",
     status: "Live",
     summary:
-      "Therapy, mood check-ins, journaling, and daily self-care, all in your pocket. I built the Go APIs behind the app's journal and mood tracker.",
+      "Therapy, mood check-ins, journaling, and daily self-care, all in your pocket.",
     focus: ["Expo", "Firebase", "AI chatbot", "Scheduling"],
     links: [
       {
